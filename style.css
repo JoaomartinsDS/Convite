@@ -1,0 +1,63 @@
+body {
+    background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWdvYzhrNG51MHh1YTR2anZjZXZiYnY1eDI2cGxsMWRrbnQ1eno3ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tRoH9EYLs3lok/giphy.gif');
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    color: white;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Fundo quando ativo */
+body.sim-ativo {
+    background-image: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm16cTBwaTQ1ZmF2YnAyMDU2ZWQ1azdrcHJveXd1ZzhiZmxmdGNpNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PdKTOwHgOASGY/giphy.gif');
+}
+
+.container {
+    z-index: 100;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid white;
+}
+
+body.sim-ativo #frase {
+    font-size: 3.5rem;
+    color: #ffeb3b;
+}
+
+/* Lógica dos GIFs */
+.gif {
+    position: fixed;
+    width: 150px;
+    display: none; /* Escondidos por padrão */
+    z-index: 10;
+}
+
+body.sim-ativo .gif {
+    display: block; /* Aparecem quando o corpo tem a classe sim-ativo */
+}
+
+/* Posições fixas espalhadas */
+.g1 { top: 5%; left: 5%; }
+.g2 { top: 5%; right: 5%; }
+.g3 { bottom: 5%; left: 5%; }
+.g4 { bottom: 5%; right: 5%; }
+.g5 { top: 50%; left: 10%; transform: translateY(-50%); }
+
+/* --- SWITCH --- */
+.switch { position: relative; display: inline-block; width: 80px; height: 34px; margin-top: 20px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #555; border-radius: 34px; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; border-radius: 50%; transition: .4s; }
+input:checked + .slider { background-color: #4CAF50; }
+input:checked + .slider:before { transform: translateX(46px); }
+.text-yes, .text-no { position: absolute; top: 50%; transform: translateY(-50%); font-size: 12px; font-weight: bold; }
+.text-no { right: 10px; } .text-yes { left: 10px; display: none; }
+input:checked + .slider .text-no { display: none; }
+input:checked + .slider .text-yes { display: block; }
